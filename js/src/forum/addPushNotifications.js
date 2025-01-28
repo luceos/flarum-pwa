@@ -3,7 +3,7 @@ import Alert from 'flarum/common/components/Alert';
 import Button from 'flarum/common/components/Button';
 import Link from 'flarum/common/components/Link';
 import Page from 'flarum/common/components/Page';
-import icon from 'flarum/common/helpers/icon';
+import Icon from 'flarum/common/components/Icon';
 import { usingAppleWebview, requestPushPermissions, requestPushPermissionState, requestPushToken, usePWABuilder } from './use-pwa-builder';
 
 const subscribeUser = (save) => {
@@ -117,7 +117,7 @@ export default () => {
               </a>,
             ],
           },
-          [icon('fas fa-exclamation-triangle'), app.translator.trans('askvortsov-pwa.forum.settings.pwa_notifications.no_browser_support')]
+          [<Icon name="fas fa-exclamation-triangle" />, app.translator.trans('askvortsov-pwa.forum.settings.pwa_notifications.no_browser_support')]
         ),
         10
       );
@@ -151,7 +151,7 @@ export default () => {
               ),
             ],
           },
-          [icon('fas fa-exclamation-circle'), app.translator.trans('askvortsov-pwa.forum.settings.pwa_notifications.access_default')]
+          [<Icon name="fas fa-exclamation-circle" />, app.translator.trans('askvortsov-pwa.forum.settings.pwa_notifications.access_default')]
         ),
         10
       );
@@ -172,7 +172,7 @@ export default () => {
               </a>,
             ],
           },
-          [icon('fas fa-exclamation-triangle'), app.translator.trans('askvortsov-pwa.forum.settings.pwa_notifications.access_denied')]
+          [<Icon name="fas fa-exclamation-triangle" />, app.translator.trans('askvortsov-pwa.forum.settings.pwa_notifications.access_denied')]
         ),
         10
       );
@@ -199,7 +199,7 @@ export default () => {
               ),
             ],
           },
-          [icon('fas fa-exclamation-circle'), app.translator.trans('askvortsov-pwa.forum.settings.pwa_notifications.access_default')]
+          [<Icon name="fas fa-exclamation-circle" />, app.translator.trans('askvortsov-pwa.forum.settings.pwa_notifications.access_default')]
         ),
         10
       );
