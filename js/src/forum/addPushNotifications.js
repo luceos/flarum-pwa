@@ -1,6 +1,4 @@
 import { extend } from 'flarum/common/extend';
-import NotificationGrid from 'flarum/forum/components/NotificationGrid';
-import SettingsPage from 'flarum/forum/components/SettingsPage';
 import Alert from 'flarum/common/components/Alert';
 import Button from 'flarum/common/components/Button';
 import Link from 'flarum/common/components/Link';
@@ -92,7 +90,7 @@ export default () => {
     }
   });
 
-  extend(NotificationGrid.prototype, 'notificationMethods', function (items) {
+  extend('flarum/forum/components/NotificationGrid', 'notificationMethods', function (items) {
     if (!pushConfigured()) return;
 
     items.add('push', {
@@ -102,7 +100,7 @@ export default () => {
     });
   });
 
-  extend(SettingsPage.prototype, 'notificationsItems', function (items) {
+  extend('flarum/forum/components/SettingsPage', 'notificationsItems', function (items) {
     if (usingAppleWebview()) return;
 
     if (!pushConfigured()) return;
@@ -181,7 +179,7 @@ export default () => {
     }
   });
 
-  extend(SettingsPage.prototype, 'notificationsItems', function (items) {
+  extend('flarum/forum/components/SettingsPage', 'notificationsItems', function (items) {
     if (!usingAppleWebview()) return;
 
     if (!hasFirebasePushState('authorized')) {
@@ -208,11 +206,11 @@ export default () => {
     }
   });
 
-  extend(SettingsPage.prototype, 'oncreate', function () {
+  extend('flarum/forum/components/SettingsPage', 'oncreate', function () {
     registerFirebasePushNotificationListeners();
   });
 
-  extend(SettingsPage.prototype, 'onremove', function () {
+  extend('flarum/forum/components/SettingsPage', 'onremove', function () {
     removeFirebasePushNotificationListeners();
   });
 };
