@@ -21,6 +21,10 @@ use Flarum\User\User;
 use Illuminate\Contracts\Filesystem\Cloud;
 use Illuminate\Contracts\Filesystem\Factory;
 use Illuminate\Support\Arr;
+use Flarum\Api\Context;
+use Flarum\Api\Endpoint;
+use Flarum\Api\Resource;
+use Flarum\Api\Schema;
 
 $metaClosure = function (Document $document) {
     $forumApiDocument = $document->getForumApiDocument();
@@ -70,6 +74,7 @@ return [
         ->css(__DIR__.'/resources/less/admin.less')
         ->content($metaClosure),
 
+    // @TODO: Replace with the new implementation https://docs.flarum.org/2.x/extend/api#extending-api-resources
     (new Extend\ApiSerializer(ForumSerializer::class))
         ->attributes(function ($serializer, $model, $attributes) {
             $settings = resolve(SettingsRepositoryInterface::class);
@@ -103,4 +108,7 @@ return [
 
     (new Extend\ServiceProvider())
         ->register(FlarumPWAServiceProvider::class),
+    new Extend\ApiResource(Api\Resource\FirebasePushSubscriptionResource::class),
+    new Extend\ApiResource(Api\Resource\PWASettingsResource::class),
+    new Extend\ApiResource(Api\Resource\PushSubscriptionResource::class),
 ];
